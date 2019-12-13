@@ -6,13 +6,12 @@ exports.up = function(knex) {
     })
     .createTable('ingredients', tbl => {
         tbl.increments()
-        tbl.string('ingredient_name', 128).notNullable().unique()
+        tbl.string('ingredient_name', 128).notNullable()
     })
     .createTable('steps', tbl => {
         tbl.increments()
         tbl.integer('step_number')
             .notNullable()
-            .unique()
         tbl.string('step_description', 128)
             .notNullable()
             .unique()
