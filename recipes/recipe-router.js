@@ -14,5 +14,21 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id', (req, res) => {
+  const id = req.params.id;
+  Recipe.getShoppingList(id)
+  .then(id => {
+    if(id){
+      res.status(200).json(id)
+    } else {
+      res.status(404).json({message: "please enter a valid id"})
+    }
+  })
+  .catch(error => {
+    console.log(error)
+    res.status(500).json({error: "error getting the recipe by id"})
+  })
+})
+
 
 module.exports = router;
